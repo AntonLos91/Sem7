@@ -1,46 +1,20 @@
-﻿﻿// Напишите программу, которая бесконечно запрашивает целые числа с консоли. 
-// Программа завершается при вводе символа 'q'или при вводе числа, сумма цифр которого четная.
-Console.Clear();
+﻿﻿﻿// Задайте значения M и N. Напишите программу, которая выведет все натуральные числа в промежутке от M до N (использовать рекурсию)
 
-bool GetSumOfElementsNumberAndCheckForParity(int number)
+void AllNaturalNumbers(int first, int last)
 {
-    int sum = 0;
-    while (number > 0)
+    if (first > last)
     {
-        sum = sum + number % 10;
-        number = number / 10;
+        return;
     }
-    if (sum % 2 == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-//bool answer = GetSumOfElementsNumberAndCheck(4539);
-//Console.WriteLine(answer);
-
-while (true)
-{
-    Console.WriteLine("Введите число: ");
-    string input = Console.ReadLine();
-    int num = 0;
-    if (input == "q")
-    {
-        Console.WriteLine("Stop");
-        break;
-    }
-    else if (int.TryParse(input, out num))
-    {
-        num = Convert.ToInt32(input);
-        if (GetSumOfElementsNumberAndCheckForParity(num))
-        {
-            Console.WriteLine("Stop");
-            break;
-        }
-    }
-    Console.WriteLine("Длязавершения программы введите число или 'q'.");
+    Console.Write(first + " ");
+    AllNaturalNumbers(first + 1, last);
+    
 
 }
+
+Console.WriteLine("Enter first number ");
+int first = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter last number ");
+int last = Convert.ToInt32(Console.ReadLine());
+
+AllNaturalNumbers(first, last);
